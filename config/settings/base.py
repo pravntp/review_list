@@ -110,9 +110,21 @@ MANAGERS = ADMINS
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 # Uses django-environ to accept uri format
 # See: https://django-environ.readthedocs.io/en/latest/#supported-types
+# DATABASES = {
+#     'default': env.db('DATABASE_URL', default='postgres:///review_list'),
+# }
+
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres:///review_list'),
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'review_list',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
 }
+
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 
